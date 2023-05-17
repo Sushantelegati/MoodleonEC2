@@ -1,0 +1,19 @@
+Letsencrypt certificate Expires in (3Months)
+Automate the Certificate Renewal Using CRON JOB(we can renew certificate SSL-only before 1 month of expire)
+
+Coomands:-
+
+cd /etc/apache2/
+
+For Renew certbot renew 
+ # certbot renew -n -r 
+
+-n ( non Interactive)
+-q  (Quite)
+
+/var/log/letsencrypt/letsencrypt.log
+
+crontab -e
+
+* * * * * 
+min Hr day Mon W

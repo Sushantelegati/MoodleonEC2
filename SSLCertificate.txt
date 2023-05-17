@@ -1,0 +1,39 @@
+Setting up LetsEncrypt SSL certificate for Moodle on Ubuntu
+
+ssl-cert-on-ubuntu-lightsail-for-Moodle.md
+Setting up LetsEncrypt SSL certificate for Moodle on Ubuntu
+
+Install certbot:-
+
+sudo apt install certbot python3-certbot-apache
+
+Enable firewall to allow Apache https and ssh:-
+
+sudo ufw status
+sudo ufw enable
+sudo ufw allow 'Apache Full'
+sudo ufw allow ssh
+sudo ufw app list
+sudo ufw status
+
+Change ServerName in:-  /etc/apache2/sites-enabled/000-default.conf to DNS names.
+(update other Virtual server configurations if multiple DNS alias are required)
+
+Obtain LetsEncrypt certificate (answer prompts according to requirements):-
+
+sudo certbot --apache
+
+Restart Apache2:-
+
+sudo systemctl stop apache2
+sudo systemctl start apache2
+
+Check and set certbot timer:-
+
+sudo systemctl status certbot.timer
+sudo certbot renew --dry-run
+sudo systemctl status certbot.timer
+
+
+
+Link for (https://gist.github.com/nanusdad/52b274cabdc0d1e0a073e8b0017395bc)
